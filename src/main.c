@@ -1,11 +1,23 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "sort.h"
-#include "file_io.h"
-#include "menu.h"
 
 int main() {
-    system("chcp 65001");
-    printf("Система инициализирована.\n");
+    int a[] = {4, 2, 7, 1, 9, 3};
+    int n = 6;
+
+    printf("DO: ");
+    for (int i = 0; i < n; i++) {
+		printf("%d ", a[i]);
+	}
+    printf("\n");
+
+    shell_sort(a, n);
+
+    printf("POSLE: ");
+    for (int i = 0; i < n; i++) {
+		printf("%d ", a[i]);
+	}
+    printf("\n");
+
     return 0;
 }
