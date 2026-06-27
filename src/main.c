@@ -1,23 +1,28 @@
 #include <stdio.h>
-#include "sort.h"
+#include "file_io.h"
 
-int main() {
-    int a[] = {4, 2, 7, 1, 9, 3};
-    int n = 6;
-
-    printf("DO: ");
-    for (int i = 0; i < n; i++) {
-		printf("%d ", a[i]);
-	}
-    printf("\n");
-
-    shell_sort(a, n);
-
-    printf("POSLE: ");
-    for (int i = 0; i < n; i++) {
-		printf("%d ", a[i]);
-	}
-    printf("\n");
-
+int main()
+{
+    int n = 0;
+    char fname[100];
+    
+    printf("Имя файла: ");
+    scanf("%s", fname);
+    
+    int* mass = load_file(fname, &n);
+    
+    if (mass)
+	{
+        printf("Массив: ");
+        for (int i = 0; i < n; i++) printf("%d ", mass[i]);
+        printf("\n");
+        
+        printf("Имя файла для сохранения: ");
+        scanf("%s", fname);
+        save_file(fname, mass, n);
+        
+        free(mass);
+    }
+    
     return 0;
 }
