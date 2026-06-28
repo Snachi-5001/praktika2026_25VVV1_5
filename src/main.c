@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "file_io.h"
+#include "sort.h"
 
 int main()
 {
@@ -17,6 +18,14 @@ int main()
         printf("Массив: ");
         for (int i = 0; i < n; i++) printf("%d ", mass[i]);
         printf("\n");
+		
+		shell_sort(mass, n);
+		printf("После сортировки: ");
+		for (int i = 0; i < n; i++)
+        {
+			printf("%d ", mass[i]);
+		}
+		printf("\n");
         
         printf("Имя файла для сохранения: ");
         scanf("%s", fname);
