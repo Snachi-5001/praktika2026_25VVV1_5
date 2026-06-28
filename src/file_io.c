@@ -6,7 +6,8 @@
 int* load_file(const char* filename, int* size)
 {
     FILE* file = fopen(filename, "r");
-    if (file == NULL) {
+    if (file == NULL)
+	{
         printf("Ошибка открытия файла\n");
         return NULL;
     }
@@ -14,14 +15,16 @@ int* load_file(const char* filename, int* size)
     int cnt = 0;
     int temp;
     // Читаем числа, игнорируя запятые
-    while (fscanf(file, "%d", &temp) == 1) {
+    while (fscanf(file, "%d", &temp) == 1)
+	{
         cnt++;
         // Пропускаем запятую или символ новой строки
         int ch = fgetc(file);
         if (ch == EOF) break;
     }
 
-    if (cnt == 0) {
+    if (cnt == 0)
+	{
         printf("Файл пуст\n");
         fclose(file);
         return NULL;
@@ -31,7 +34,8 @@ int* load_file(const char* filename, int* size)
     int* mass = (int*)malloc(cnt * sizeof(int));
     *size = cnt;
 
-    for (int i = 0; i < cnt; i++) {
+    for (int i = 0; i < cnt; i++)
+	{
         fscanf(file, "%d", &mass[i]);
         fgetc(file); // пропускаем запятую
     }
@@ -42,20 +46,24 @@ int* load_file(const char* filename, int* size)
 
 void save_file(const char* filename, int* mass, int n)
 {
-    if (n == 0) {
+    if (n == 0)
+	{
         printf("Массив пуст\n");
         return;
     }
 
     FILE* file = fopen(filename, "w");
-    if (file == NULL) {
+    if (file == NULL)
+	{
         printf("Ошибка создания\n");
         return;
     }
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+	{
         fprintf(file, "%d", mass[i]);
-        if (i < n - 1) {
+        if (i < n - 1)
+		{
             fprintf(file, ",");
         }
     }
