@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int* load_file(const char* filename, int* size)
+int* load_file(const char* filename, int* size) // Молчанов: исправлена ошибка чтения CSV
 {
     FILE* file = fopen(filename, "r");
     if (file == NULL)
